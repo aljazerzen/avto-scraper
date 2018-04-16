@@ -16,8 +16,10 @@ def send(cars):
         '<a href="https://www.avto.net/Ads/details.asp?id=${id}">${name}</a><br>' \
         '<b>${price} €</b>, letnik: ${reg}, ${km} km</div></li>'
     for car in cars:
-        if 'km' not in car:
+        if car['km'] is None:
             car['km'] = '?'
+        if car['reg'] is None:
+            car['reg'] = '?'
         text += Template(template_str).substitute(car)
 
     text += '</ul>'

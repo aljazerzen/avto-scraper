@@ -1,19 +1,26 @@
 import yaml
 
 
+def get_list(storage, key):
+    return storage[key] if (storage is not None and key in storage) else []
+
+
 def load():
     try:
-        f = open('avti.yaml', 'r')
+        f = open('storage.yaml', 'r')
     except FileNotFoundError:
-        return []
+        return [], []
 
     res = yaml.load(f)
     f.close()
-    return res['avti'] if (res is not None and 'avti' in res) else []
+    return get_list(res, 'all'), get_list(res, 'to_send')
 
 
-def save(avti):
-    f = open('avti.yaml', 'w')
+def save(all_cars, to_send):
+    f = open('storage.yaml', 'w')
 
-    f.write(yaml.dump({'avti': avti}))
+    f.write(yaml.dump({
+        'all': all_cars,
+        'to_send': to_send
+    }))
     f.close()

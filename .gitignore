@@ -10,3 +10,4 @@ avto_scraper.egg-info/
 app/config.py
 error.log
 avti.yaml
+storage.yaml

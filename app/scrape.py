@@ -15,43 +15,41 @@ def scrape():
 
     results = soup.find_all('div', attrs={'class': 'ResultsAd'})
 
-    avti = []
+    cars = []
 
     for result in results:
 
         data = result.find('div', attrs={'class': 'ResultsAdData'})
 
-        avto = {
+        price = result.find('div', attrs={'class': 'ResultsAdPrice'}).text.strip().split(' €')[0].split(' ')[-1]
+        try:
+            price = float(price.replace(".", ""))
+        except ValueError:
+            price = None
+
+        car = {
             'id': data.find('a', attrs={'class': 'Adlink'})['href'].split('id=')[1].split('&')[0],
             'name': data.span.text,
-            'price': result.find('div', attrs={'class': 'ResultsAdPrice'}).text.strip().split(' €')[0],
+            'price': price,
             'photo': result.find('div', attrs={'class': 'ResultsAdPhotoContainer'}).img['src']
         }
 
         for a in data.ul.children:
             if a.name:
                 if 'Letnik 1.registracije:' in a.text:
-                    avto['reg'] = a.text.split(':')[1]
+                    car['reg'] = a.text.split(':')[1]
                 elif ' km' in a.text:
-                    avto['km'] = int(a.text.split(' km')[0])
+                    car['km'] = int(a.text.split(' km')[0])
                 elif 'motor, ' in a.text:
-                    avto['engine'] = a.text
+                    car['engine'] = a.text
                 elif 'menjalnik' in a.text:
-                    avto['trans'] = a.text
+                    car['trans'] = a.text
 
-        avti.append(avto)
-    return avti
+        if 'km' not in car:
+            car['km'] = None
 
+        if 'reg' not in car:
+            car['reg'] = None
 
-def merge(old_cars, new_cars):
-    new = []
-    merged = []
-    for newAvto in new_cars:
-        if len(old_cars) > 0 and newAvto['id'] == old_cars[0]['id']:
-            old_cars.pop(0)
-        else:
-            new.append(newAvto)
-        merged.append(newAvto)
-
-    merged = merged + old_cars
-    return merged, new
+        cars.append(car)
+    return cars

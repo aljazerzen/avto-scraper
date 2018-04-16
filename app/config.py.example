@@ -1,4 +1,10 @@
 SCRAPE_INTERVAL = 30  # seconds
+SEND_INTERVAL = 80
+
+FILTER = {
+    'max_price': 5000,
+    'max_km': 100000,
+}
 
 SMTP = {
     'from': '',

@@ -1,10 +1,12 @@
-
-
 .idea/
 
 build/
 dist/
 avto_scraper.egg-info/
 
+**__pycache__/
+*.pyc
+
+app/config.py
 error.log
 avti.yaml

@@ -8,9 +8,13 @@ def send(cars):
     if len(cars) == 0:
         return
 
-    text = 'Nove objave na Avto.net:<br><ul style="line-height: 2em;">'
-    template_str = '<li><a href="https://www.avto.net/Ads/details.asp?id=${id}">${name}</a><br>' \
-                   '${cena} €, letnik: 2008, ${km} km</li>'
+    text = 'Nove objave na Avto.net:<br><ul style = "line-height: 2em;list-style-type: none;" >'
+    template_str = \
+        '<li style = "height: 120px;background:  # eee;margin-bottom: 5px;">' \
+        '<img src="${photo}" style="display: inline-block;vertical-align: top;">' \
+        '<div style="display: inline-block;padding: 20px;">' \
+        '<a href="https://www.avto.net/Ads/details.asp?id=${id}">${name}</a><br>' \
+        '<b>${price} €</b>, letnik: ${reg}, ${km} km</div></li>'
     for car in cars:
         if 'km' not in car:
             car['km'] = '?'

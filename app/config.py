@@ -1,5 +1,7 @@
 SCRAPE_INTERVAL = 30  # seconds
 
+
+
 SMTP = {
     'from': '',
     'to': '',

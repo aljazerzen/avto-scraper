@@ -1,9 +1,0 @@
-app:
-  interval: 30
-smtp:
-  from: ''
-  to: ''
-  host: ''
-  port: 587
-  user: ''
-  password: ''

@@ -1,3 +1,10 @@
-avti.yaml
-config.yaml
+
+
+.idea/
+
+build/
+dist/
+avto_scraper.egg-info/
+
 error.log
+avti.yaml

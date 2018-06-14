@@ -1,6 +1,8 @@
 SCRAPE_INTERVAL = 30  # seconds
 SEND_INTERVAL = 80
 
+WEB_SERVER_PORT = 4875
+
 FILTER = {
     'max_price': 5000,
     'max_km': 100000,

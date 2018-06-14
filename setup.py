@@ -28,6 +28,6 @@ setup(
 
     # Dependent packages (distributions)
     install_requires=[
-        "beautifulsoup4", "certifi", "PyYAML", "urllib3"
+        "beautifulsoup4", "certifi", "PyYAML", "urllib3", "flask"
     ],
 )

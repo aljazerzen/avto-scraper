@@ -1,0 +1,6 @@
+filters:
+    max_price: 50000
+    max_km: 1000000
+
+scrape_interval: 10  # seconds
+send_interval: 15  # seconds

@@ -1,5 +1,3 @@
-from app.config import FILTER
-
 
 def merge(old_cars, new_cars):
     added = []
@@ -16,10 +14,3 @@ def merge(old_cars, new_cars):
 
     merged = merged + old_cars
     return merged, added
-
-
-def filter_cars(cars):
-    return [car for car in cars if
-            (FILTER['max_price'] is None or (car['price'] is not None and car['price'] <= FILTER['max_price'])) and
-            (FILTER['max_km'] is None or (car['km'] is not None and car['km'] <= FILTER['max_km']))
-            ]
